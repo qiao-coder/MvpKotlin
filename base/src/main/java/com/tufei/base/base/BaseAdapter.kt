@@ -1,9 +1,9 @@
 package com.tufei.base.base
 
 import android.content.Context
-import android.support.annotation.LayoutRes
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.tufei.base.util.rx.into
@@ -13,7 +13,7 @@ import com.tufei.base.util.rx.toSingle
  * @author TuFei
  * @date 18-9-26.
  */
-abstract class BaseAdapter<T>(@LayoutRes private val layoutId: Int) : RecyclerView.Adapter<ViewHolder>() {
+abstract class BaseAdapter<T>(@LayoutRes private val layoutId: Int) : androidx.recyclerview.widget.RecyclerView.Adapter<ViewHolder>() {
 
     protected val TAG = javaClass.simpleName
     protected lateinit var context: Context

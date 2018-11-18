@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -42,10 +42,10 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "com.android.support:design:$supportLibraryVersion"
-    api "com.android.support:recyclerview-v7:$supportLibraryVersion"
-    api "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
-    api "com.android.support:appcompat-v7:$supportLibraryVersion"
+    api 'com.google.android.material:material:1.1.0-alpha01'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    api 'androidx.appcompat:appcompat:1.0.2'
 
     api 'com.github.bumptech.glide:glide:4.8.0'
     api 'jp.wasabeef:glide-transformations:4.0.0'
@@ -84,6 +84,6 @@ dependencies {
     api 'com.alibaba:arouter-api:1.4.0'
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
