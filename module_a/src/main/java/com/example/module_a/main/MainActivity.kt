@@ -1,9 +1,9 @@
-package com.example.tufei.mvpkotlin.main
+package com.example.module_a.main
 
 import android.os.Bundle
 import android.view.View
-import com.example.tufei.mvpkotlin.R
-import com.example.tufei.mvpkotlin.UserBean
+import com.example.module_a.R
+import com.example.module_a.UserBean
 import com.tufei.base.base.BaseActivity
 import com.tufei.base.util.Preferences
 import com.tufei.base.util.extraDelegate
@@ -17,7 +17,7 @@ class MainActivity : BaseActivity(), MainView, View.OnClickListener {
     @Inject
     lateinit var presenter: MainPresenter
     @Inject
-    lateinit var presenter2:MainPresenter
+    lateinit var presenter2: MainPresenter
     @Inject
     lateinit var fragment1: MainFragment
     @Inject
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity(), MainView, View.OnClickListener {
         }
         //MainPresenter类必须加@ActivityScoped。
         //presenter、presenter2才会实现activity域内的单例
-        if(!(presenter===presenter2)){
+        if (!(presenter === presenter2)) {
             throw RuntimeException("不是同一个实例")
         }
 

@@ -1,8 +1,6 @@
-package com.example.tufei.mvpkotlin.main
+package com.example.module_a.main
 
-import com.tufei.base.di.ActivityScoped
 import com.tufei.base.di.FragmentScoped
-import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -1,6 +1,6 @@
-package com.example.tufei.mvpkotlin.main
+package com.example.module_a.main
 
-import com.example.tufei.mvpkotlin.DataRepository
+import com.example.module_a.DataRepository
 import com.tufei.base.base.BasePresenter
 import com.tufei.base.di.ActivityScoped
 import com.tufei.base.util.rx.handleHttpDSL

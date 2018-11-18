@@ -34,6 +34,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation project(':base')
+    if(!isDebug){
+        implementation project(":module_a")
+        implementation project(":module_b")
+    }
 
     //每个使用到dagger的module都需要添加下面两行配置
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"

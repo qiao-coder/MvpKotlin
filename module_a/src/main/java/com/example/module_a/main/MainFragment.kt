@@ -1,10 +1,8 @@
-package com.example.tufei.mvpkotlin.main
+package com.example.module_a.main
 
 import android.os.Bundle
-import com.example.tufei.mvpkotlin.R
+import com.example.module_a.R
 import com.tufei.base.base.BaseFragment
-import com.tufei.base.di.ActivityScoped
-import com.tufei.base.di.FragmentScoped
 import javax.inject.Inject
 
 /**

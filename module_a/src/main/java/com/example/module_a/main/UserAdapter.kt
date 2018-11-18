@@ -1,7 +1,7 @@
-package com.example.tufei.mvpkotlin.main
+package com.example.module_a.main
 
-import com.example.tufei.mvpkotlin.R
-import com.example.tufei.mvpkotlin.UserBean
+import com.example.module_a.R
+import com.example.module_a.UserBean
 import com.tufei.base.base.BaseAdapter
 import com.tufei.base.base.ViewHolder
 import com.tufei.base.util.setCircleSrc
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_user.*
 class UserAdapter : BaseAdapter<UserBean>(R.layout.item_user) {
     override fun onBind(holder: ViewHolder, item: UserBean, position: Int) {
         with(holder) {
-            iv_head.setCircleSrc(R.mipmap.ic_launcher)
+            iv_head.setCircleSrc(R.drawable.ic_launcher)
             tv_name.text = item.name
         }
     }
