@@ -1,7 +1,7 @@
 package com.tufei.base.util
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import kotlin.reflect.KProperty
 
 /**
@@ -22,7 +22,7 @@ class ExtrasDelegate<out T>(private val extraName: String, private val defaultVa
         return extra ?: defaultValue
     }
 
-    operator fun getValue(thisRef: Fragment, property: KProperty<*>): T {
+    operator fun getValue(thisRef: androidx.fragment.app.Fragment, property: KProperty<*>): T {
         extra = getExtra(extra, extraName, thisRef)
         return extra ?: defaultValue
     }
@@ -38,5 +38,5 @@ private fun <T> getExtra(oldExtra: T?, extraName: String, thisRef: AppCompatActi
         oldExtra ?: thisRef.intent?.extras?.get(extraName) as T?
 
 @Suppress("UNCHECKED_CAST")
-private fun <T> getExtra(oldExtra: T?, extraName: String, thisRef: Fragment): T? =
+private fun <T> getExtra(oldExtra: T?, extraName: String, thisRef: androidx.fragment.app.Fragment): T? =
         oldExtra ?: thisRef.arguments?.get(extraName) as T?

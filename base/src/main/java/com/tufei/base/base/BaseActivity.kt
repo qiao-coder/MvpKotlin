@@ -2,7 +2,7 @@ package com.tufei.base.base
 
 import android.content.Context
 import android.os.Bundle
-import android.support.annotation.LayoutRes
+import androidx.annotation.LayoutRes
 import android.util.Log
 import com.tufei.base.util.ToastTime
 import com.tufei.base.util.showToast

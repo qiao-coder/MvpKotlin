@@ -10,7 +10,7 @@ ext {
     supportLibraryVersion = '28.0.0'
     constraintLayoutVersion = '1.1.3'
     guavaVersion = '23.0'
-    daggerVersion = '2.15'
+    daggerVersion = '2.16'
     rxandroidVersion = "2.0.1"
     rxjavaVersion = "2.1.6"
     rxkotlinVersion = "2.2.0"
@@ -74,7 +74,7 @@ subprojects {
                 details.useVersion "$supportLibraryVersion"
             }
             if (details.requested.group == 'com.android.support'
-                    && details.requested.name =='multidex') {
+                    && details.requested.name == 'multidex') {
                 details.useVersion "$multidexVersion"
             }
             if (details.requested.group == 'android.arch.lifecycle') {
