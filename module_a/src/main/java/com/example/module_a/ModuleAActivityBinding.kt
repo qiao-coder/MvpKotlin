@@ -1,7 +1,7 @@
-package com.example.tufei.mvpkotlin
+package com.example.module_a
 
-import com.example.tufei.mvpkotlin.main.MainActivity
-import com.example.tufei.mvpkotlin.main.MainModule
+import com.example.module_a.main.MainActivity
+import com.example.module_a.main.MainModule
 import com.tufei.base.di.ActivityScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -11,7 +11,7 @@ import dagger.android.ContributesAndroidInjector
  * @date 18-11-17.
  */
 @Module
-abstract class ActivityBindingModule {
+abstract class ModuleAActivityBinding {
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = [MainModule::class])

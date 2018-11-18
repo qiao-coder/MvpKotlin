@@ -33,6 +33,12 @@ android {
 
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -73,8 +79,9 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //ARouter
-//    api 'com.alibaba:arouter-api:1.4.0'
-//    kapt 'com.alibaba:arouter-compiler:1.2.1'
+    kapt 'com.alibaba:arouter-compiler:1.2.1'
+    //有毒，每个module都要配这个依赖。不然会报kapt NullPointerException
+    api 'com.alibaba:arouter-api:1.4.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

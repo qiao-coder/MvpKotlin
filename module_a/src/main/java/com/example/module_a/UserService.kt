@@ -1,4 +1,4 @@
-package com.example.tufei.mvpkotlin
+package com.example.module_a
 
 import com.tufei.base.net.HttpResult
 import io.reactivex.Single

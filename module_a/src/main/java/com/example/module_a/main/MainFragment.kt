@@ -1,10 +1,8 @@
-package com.example.tufei.mvpkotlin.main
+package com.example.module_a.main
 
 import android.os.Bundle
-import com.example.tufei.mvpkotlin.R
+import com.example.module_a.R
 import com.tufei.base.base.BaseFragment
-import com.tufei.base.di.ActivityScoped
-import com.tufei.base.di.FragmentScoped
 import javax.inject.Inject
 
 /**
@@ -13,7 +11,7 @@ import javax.inject.Inject
  */
 class MainFragment @Inject constructor() : BaseFragment() {
 
-    override fun setupLayoutId(): Int = R.layout.activity_main
+    override fun setupLayoutId(): Int = R.layout.a_activity_main
 
     override fun setupPresenter() {
     }

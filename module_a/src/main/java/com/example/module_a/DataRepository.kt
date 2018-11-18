@@ -1,4 +1,4 @@
-package com.example.tufei.mvpkotlin
+package com.example.module_a
 
 import android.content.Context
 import javax.inject.Inject
@@ -10,7 +10,8 @@ import javax.inject.Singleton
  */
 @Singleton
 class DataRepository @Inject constructor(@JvmField var context: Context,
-                                         @JvmField var userService: UserService) {
+                                         @JvmField var userService: UserService
+) {
     fun login() =
             userService.login(
                 mutableMapOf(

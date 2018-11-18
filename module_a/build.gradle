@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isDebug) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 //每个使用kotlin的module都需要添加下面三行配置
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
@@ -35,8 +39,16 @@ android {
 
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':base')
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
@@ -48,5 +60,7 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     //ARouter
-//    kapt 'com.alibaba:arouter-compiler:1.2.1'
+    kapt 'com.alibaba:arouter-compiler:1.2.1'
+    api 'com.alibaba:arouter-api:1.4.0'
+
 }
