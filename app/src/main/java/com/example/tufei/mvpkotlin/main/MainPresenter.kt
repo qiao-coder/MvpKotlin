@@ -2,6 +2,7 @@ package com.example.tufei.mvpkotlin.main
 
 import com.example.tufei.mvpkotlin.DataRepository
 import com.tufei.base.base.BasePresenter
+import com.tufei.base.di.ActivityScoped
 import com.tufei.base.util.rx.handleHttpDSL
 import javax.inject.Inject
 
@@ -10,6 +11,7 @@ import javax.inject.Inject
  * @date 18-11-17.
  */
 //注意，@JvmField var是必须的。
+@ActivityScoped
 class MainPresenter @Inject constructor(@JvmField var dataRepository: DataRepository) :
     BasePresenter<MainView>() {
 

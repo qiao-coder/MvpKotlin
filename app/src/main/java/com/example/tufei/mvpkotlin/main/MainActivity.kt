@@ -8,6 +8,7 @@ import com.tufei.base.base.BaseActivity
 import com.tufei.base.util.Preferences
 import com.tufei.base.util.extraDelegate
 import com.tufei.base.util.setOnClickListener
+import dagger.Lazy
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -15,6 +16,15 @@ class MainActivity : BaseActivity(), MainView, View.OnClickListener {
 
     @Inject
     lateinit var presenter: MainPresenter
+    @Inject
+    lateinit var presenter2:MainPresenter
+    @Inject
+    lateinit var fragment1: MainFragment
+    @Inject
+    lateinit var fragment2: MainFragment
+    //注意，别一不小心用了kotlin的lazy
+    @Inject
+    lateinit var fragmentLazy: Lazy<MainFragment>
 
     //从intent中获取参数
     private val fromSystem: Boolean by extraDelegate("fromSystem", false)
@@ -32,6 +42,15 @@ class MainActivity : BaseActivity(), MainView, View.OnClickListener {
     }
 
     override fun setupData(savedInstanceState: Bundle?) {
+        if (fragment1 === fragment2 || fragment1 === fragmentLazy.get()) {
+            throw RuntimeException("同一个实例")
+        }
+        //MainPresenter类必须加@ActivityScoped。
+        //presenter、presenter2才会实现activity域内的单例
+        if(!(presenter===presenter2)){
+            throw RuntimeException("不是同一个实例")
+        }
+
         //调到该扩展方法前，必须实现View.OnClickListener接口
         setOnClickListener(btn_hello, btn_next, rv_content)
 
