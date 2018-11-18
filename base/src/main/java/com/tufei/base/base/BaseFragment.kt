@@ -17,7 +17,7 @@ abstract class BaseFragment : DaggerFragment() {
     protected val TAG = javaClass.simpleName
 
     @Deprecated("为了封装做的妥协，请不要调用")
-    var _presenter: IBasePresenter<out IBaseView>? = null
+    var _presenter: BasePresenter<out IBaseView>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(setupLayoutId(), container, false)
@@ -55,12 +55,12 @@ abstract class BaseFragment : DaggerFragment() {
 
     /**
      * 绑定view到presenter上。当该fragment被销毁，在执行[onDestroy]时，会执行
-     * presenter的[IBasePresenter.onDetachView]方法。该方法里面，会取消该presenter所有的rx
+     * presenter的[BasePresenter.onDetachView]方法。该方法里面，会取消该presenter所有的rx
      * 的订阅。这样，就不用在担心异步任务完成后的回调里，执行UI更新操作，会导致空指针等问题。
      *
      * @throws IllegalArgumentException 如果该fragment没有实现presenter需要的view接口
      */
-    inline fun <reified V : IBaseView, P : IBasePresenter<V>, T : P> attach(t: T) {
+    inline fun <reified V : IBaseView, P : BasePresenter<V>, T : P> attach(t: T) {
         when {
             this is V -> {
                 _presenter = t

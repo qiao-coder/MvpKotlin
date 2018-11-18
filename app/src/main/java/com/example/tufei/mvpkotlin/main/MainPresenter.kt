@@ -11,9 +11,9 @@ import javax.inject.Inject
  */
 //注意，@JvmField var是必须的。
 class MainPresenter @Inject constructor(@JvmField var dataRepository: DataRepository) :
-    BasePresenter<MainContract.View>(), MainContract.Presenter {
+    BasePresenter<MainView>() {
 
-    override fun login() {
+    fun login() {
         dataRepository.login()
             //handleHttpDSL，封装了线程切换。网络请求预处理。
             //另一个版本是handleNoDataHttpDSL

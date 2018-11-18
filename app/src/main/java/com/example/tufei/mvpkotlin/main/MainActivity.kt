@@ -11,10 +11,10 @@ import com.tufei.base.util.setOnClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
+class MainActivity : BaseActivity(), MainView, View.OnClickListener {
 
     @Inject
-    lateinit var presenter: MainContract.Presenter
+    lateinit var presenter: MainPresenter
 
     //从intent中获取参数
     private val fromSystem: Boolean by extraDelegate("fromSystem", false)

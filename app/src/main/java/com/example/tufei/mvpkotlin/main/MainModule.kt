@@ -17,7 +17,7 @@ abstract class MainModule {
     @ContributesAndroidInjector
     abstract fun mainFragment(): MainFragment
 
-    @ActivityScoped
-    @Binds
-    abstract fun splashPresenter(mainPresenter: MainPresenter): MainContract.Presenter
+//    @ActivityScoped
+//    @Binds
+//    abstract fun mainPresenter(mainPresenter: MainPresenter): MainContract.Presenter
 }
