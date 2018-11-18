@@ -3,6 +3,7 @@ package com.example.tufei.mvpkotlin
 import android.app.Application
 import com.example.module_a.AppModule
 import com.example.module_a.ModuleAActivityBinding
+import com.example.module_b.ModuleBActivityBinding
 import com.tufei.base.di.BaseAppModule
 import dagger.BindsInstance
 import dagger.Component
@@ -21,6 +22,7 @@ import javax.inject.Singleton
         AppModule::class,
         BaseAppModule::class,
         ModuleAActivityBinding::class,
+        ModuleBActivityBinding::class,
         AndroidSupportInjectionModule::class
     ]
 )

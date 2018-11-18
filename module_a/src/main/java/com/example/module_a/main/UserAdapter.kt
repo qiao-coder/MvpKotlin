@@ -5,16 +5,16 @@ import com.example.module_a.UserBean
 import com.tufei.base.base.BaseAdapter
 import com.tufei.base.base.ViewHolder
 import com.tufei.base.util.setCircleSrc
-import kotlinx.android.synthetic.main.item_user.*
+import kotlinx.android.synthetic.main.a_item_user.*
 
 /**
  * @author TuFei
  * @date 18-11-17.
  */
-class UserAdapter : BaseAdapter<UserBean>(R.layout.item_user) {
+class UserAdapter : BaseAdapter<UserBean>(R.layout.a_item_user) {
     override fun onBind(holder: ViewHolder, item: UserBean, position: Int) {
         with(holder) {
-            iv_head.setCircleSrc(R.drawable.ic_launcher)
+            iv_head.setCircleSrc(R.drawable.a_icon_head)
             tv_name.text = item.name
         }
     }

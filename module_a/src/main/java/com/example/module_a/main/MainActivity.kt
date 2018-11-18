@@ -2,6 +2,7 @@ package com.example.module_a.main
 
 import android.os.Bundle
 import android.view.View
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.module_a.R
 import com.example.module_a.UserBean
 import com.tufei.base.base.BaseActivity
@@ -9,7 +10,7 @@ import com.tufei.base.util.Preferences
 import com.tufei.base.util.extraDelegate
 import com.tufei.base.util.setOnClickListener
 import dagger.Lazy
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.a_activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView, View.OnClickListener {
@@ -34,7 +35,7 @@ class MainActivity : BaseActivity(), MainView, View.OnClickListener {
     //isFirst = true，就是更新sp值
     private var isFirst: Boolean by Preferences("isFirst", false)
 
-    override fun setupLayoutId() = R.layout.activity_main
+    override fun setupLayoutId() = R.layout.a_activity_main
 
     override fun setupPresenter() {
         attach(presenter)
@@ -63,8 +64,8 @@ class MainActivity : BaseActivity(), MainView, View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_hello -> showToast("hello")
-
-            R.id.btn_next -> showToast("next")
+            // 1. 应用内简单的跳转(通过URL跳转在'进阶用法'中)
+            R.id.btn_next -> ARouter.getInstance().build("/module_b/LoginActivity").navigation();
 
             //RecyclerView重写了onTouch事件没有去理会父类的Listener，导致OnClickListener失效
             R.id.rv_content -> showToast("rv_content")

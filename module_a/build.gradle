@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isDebug) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 //每个使用kotlin的module都需要添加下面三行配置
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'

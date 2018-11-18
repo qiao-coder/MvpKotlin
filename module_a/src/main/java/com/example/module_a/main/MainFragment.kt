@@ -11,7 +11,7 @@ import javax.inject.Inject
  */
 class MainFragment @Inject constructor() : BaseFragment() {
 
-    override fun setupLayoutId(): Int = R.layout.activity_main
+    override fun setupLayoutId(): Int = R.layout.a_activity_main
 
     override fun setupPresenter() {
     }
