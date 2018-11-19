@@ -22,6 +22,9 @@ android {
         resourcePrefix "b_"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        if(isDebug){
+            applicationId "com.example.module_b"
+        }
     }
 
     buildTypes {
@@ -35,6 +38,25 @@ android {
     //每个使用该功能的module都需要配置
     androidExtensions {
         experimental = true
+    }
+
+    //组建化配置：isDebug为true时，module能变成一个独立调试的app
+    //src/main/debug下面是为调试添加的代码
+    sourceSets {
+        main {
+            if (isDebug) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                java.srcDirs = ['src/main/java', 'src/main/debug/java']
+                res.srcDirs = ['src/main/res', 'src/main/debug/res']
+                res.srcDirs += ['src/main/debug/res']
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //排除src/main/debug文件夹下的所有文件
+                    exclude 'src/main/debug/**'
+                }
+            }
+        }
     }
 }
 

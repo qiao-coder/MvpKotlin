@@ -1,9 +1,8 @@
 package com.example.tufei.mvpkotlin
 
 import android.app.Application
-import com.example.module_a.AppModule
-import com.example.module_a.ModuleAActivityBinding
-import com.example.module_b.ModuleBActivityBinding
+import com.example.module_a.AModule
+import com.example.module_b.BModule
 import com.tufei.base.di.BaseAppModule
 import dagger.BindsInstance
 import dagger.Component
@@ -18,13 +17,12 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(
-    modules = [
-        AppModule::class,
-        BaseAppModule::class,
-        ModuleAActivityBinding::class,
-        ModuleBActivityBinding::class,
-        AndroidSupportInjectionModule::class
-    ]
+        modules = [
+            BaseAppModule::class,
+            AModule::class,
+            BModule::class,
+            AndroidSupportInjectionModule::class
+        ]
 )
 interface AppComponent : AndroidInjector<App> {
 

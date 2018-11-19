@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * @date 18-11-17.
  */
 @Module
-class AppModule {
+class SingleModule {
     @Provides
     @Singleton
     fun provideUserService(retrofit: Retrofit): UserService {
