@@ -79,7 +79,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         (this as Context).showToast(tip, ToastTime.SHORT)
     }
 
-     fun onDestroy() {
+     override fun onDestroy() {
         Log.i(TAG, "$TAG : onDestroy()")
         if (setPresenter) {
             _presenter.onDetachView()
