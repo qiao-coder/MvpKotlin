@@ -3,6 +3,8 @@ package com.example.module_a.main
 import com.example.module_a.DataRepository
 import com.tufei.base.base.BasePresenter
 import com.tufei.base.di.ActivityScoped
+import com.tufei.base.util.awaitUI
+import com.tufei.base.util.launchUI
 import com.tufei.base.util.rx.handleHttpDSL
 import javax.inject.Inject
 
@@ -33,7 +35,22 @@ class MainPresenter @Inject constructor(@JvmField var dataRepository: DataReposi
                         view.showToast(this)
                     }
                 }
+            }.addToSubscriptions()
+    }
+
+    fun loginTest() {
+        launchUI {
+            view.showLoading()
+            kotlin.runCatching {
+                dataRepository.loginTest().awaitUI()
+                view.hideLoading()
+            }.onFailure {
+                view.hideLoading()
+                it.message?.run {
+                    view.showToast(this)
+                }
             }
+        }.addCoroutines() // addCoroutines方法是基类取消协程的操作
     }
 
 }

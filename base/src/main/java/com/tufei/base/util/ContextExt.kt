@@ -23,6 +23,7 @@ enum class ToastTime {
 }
 
 @SuppressLint("ShowToast")
+@JvmName("toast")
 fun Context.showToast(tip: String, toastTime: ToastTime) {
     val time = when (toastTime) {
         ToastTime.LONG -> Toast.LENGTH_LONG
