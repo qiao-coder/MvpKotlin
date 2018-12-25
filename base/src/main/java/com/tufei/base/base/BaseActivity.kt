@@ -7,7 +7,6 @@ import android.util.Log
 import com.tufei.base.util.ToastTime
 import com.tufei.base.util.showToast
 import dagger.android.support.DaggerAppCompatActivity
-
 /**
  * @author TuFei
  * @date 18-11-17.
@@ -15,8 +14,11 @@ import dagger.android.support.DaggerAppCompatActivity
 abstract class BaseActivity : DaggerAppCompatActivity() {
     protected val TAG = javaClass.simpleName
 
-    @Deprecated("为了封装做的妥协，请不要调用")
-    var _presenter: BasePresenter<out IBaseView>? = null
+    /**
+     *为了封装做的妥协，请不要调用
+     */
+    lateinit var _presenter: BasePresenter<out IBaseView>
+    protected var setPresenter: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,9 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
         setContentView(setupLayoutId())
         setupPresenter()
+        if (setPresenter && ::_presenter.isInitialized) {
+            throw IllegalArgumentException("${this.javaClass.simpleName} presenter未初始化，在setupPresenter里面调用attach()方法")
+        }
         setupData(savedInstanceState)
     }
 
@@ -74,10 +79,13 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         (this as Context).showToast(tip, ToastTime.SHORT)
     }
 
-    override fun onDestroy() {
+     override fun onDestroy() {
         Log.i(TAG, "$TAG : onDestroy()")
-        _presenter?.onDetachView()
+        if (setPresenter) {
+            _presenter.onDetachView()
+        }
         //销毁顺序与初始化顺序应该相反，所以，放在最后面
         super.onDestroy()
     }
 }
+

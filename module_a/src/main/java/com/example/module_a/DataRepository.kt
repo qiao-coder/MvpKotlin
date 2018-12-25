@@ -13,7 +13,14 @@ class DataRepository @Inject constructor(@JvmField var context: Context,
                                          @JvmField var userService: UserService
 ) {
     fun login() =
-            userService.login(
+        userService.login(
+            mutableMapOf(
+                "id" to "123456"
+            )
+        )
+
+    fun loginTest() =
+            userService.loginTest(
                 mutableMapOf(
                     "id" to "123456"
                 )

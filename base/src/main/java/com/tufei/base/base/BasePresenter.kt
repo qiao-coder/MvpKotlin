@@ -1,7 +1,9 @@
 package com.tufei.base.base
 
+import com.tufei.base.util.cancelByActive
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.Job
 
 /**
  * @author TuFei
@@ -10,6 +12,7 @@ import io.reactivex.disposables.Disposable
 open class BasePresenter<View : IBaseView> : IBasePresenter<View> {
     protected val TAG = javaClass.simpleName
     private val compositeDisposable = CompositeDisposable()
+    private val jobs = mutableListOf<Job>()
     //在Presenter里面，直接使用这个变量，调用view层的方法
     protected lateinit var view: View
 
@@ -25,7 +28,13 @@ open class BasePresenter<View : IBaseView> : IBasePresenter<View> {
         compositeDisposable.add(this)
     }
 
+    protected fun Job.addCoroutines() {
+        jobs.add(this)
+    }
+
     override fun onDetachView() {
         compositeDisposable.clear()
+        jobs.forEach { it.cancelByActive() }
+        jobs.clear()
     }
 }
