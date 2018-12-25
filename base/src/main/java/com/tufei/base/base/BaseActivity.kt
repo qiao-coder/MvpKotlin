@@ -30,7 +30,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
         setContentView(setupLayoutId())
         setupPresenter()
-        if (setPresenter && ::_presenter.isInitialized) {
+        if (setPresenter && !::_presenter.isInitialized) {
             throw IllegalArgumentException("${this.javaClass.simpleName} presenter未初始化，在setupPresenter里面调用attach()方法")
         }
         setupData(savedInstanceState)
