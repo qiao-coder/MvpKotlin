@@ -15,7 +15,7 @@ class LoginActivity : BaseActivity() {
     override fun setupLayoutId() = R.layout.b_activity_login
 
     override fun setupPresenter() {
-
+        setPresenter = false
     }
 
     override fun setupData(savedInstanceState: Bundle?) {
