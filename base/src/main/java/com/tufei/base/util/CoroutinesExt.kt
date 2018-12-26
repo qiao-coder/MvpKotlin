@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 class SuccessAndError<T : Any> {
     private var _onSuccess: T.() -> Unit = {}
     private var _onError: (Throwable) -> Unit = {}
-    var context: CoroutineContext = Dispatchers.Main
+    var context: CoroutineContext = Dispatchers.Default
 
     fun onSuccess(onSuccess: T.() -> Unit) {
         _onSuccess = onSuccess
